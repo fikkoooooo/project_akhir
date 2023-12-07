@@ -6,7 +6,7 @@ import 'package:project_akhir/kategori/furniture_model.dart';
 const accessoriesColor = Color(0xffeab56f);
 
 class furniture extends StatefulWidget {
-  const furniture({super.key});
+  const furniture({Key? key}) : super(key: key);
 
   @override
   State<furniture> createState() => _furnitureState();
@@ -21,7 +21,10 @@ class _furnitureState extends State<furniture> {
         title: const Text(
           "FURNITURE",
           style: TextStyle(
-              fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
         centerTitle: true,
       ),
@@ -32,17 +35,18 @@ class _furnitureState extends State<furniture> {
   Widget _buildListFurnitureBody() {
     return Container(
       child: FutureBuilder(
-          future: ApiDataSource.instance.loadFurniture(),
-          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-            if (snapshot.hasError) {
-              return _buildErrorSection();
-            }
-            if (snapshot.hasData) {
-              Furniture furniture = Furniture.fromJson(snapshot.data);
-              return _buildSuccessSection(furniture);
-            }
-            return _buildLoadingSection();
-          }),
+        future: ApiDataSource.instance.loadFurniture(),
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          if (snapshot.hasError) {
+            return _buildErrorSection();
+          }
+          if (snapshot.hasData) {
+            Furniture furniture = Furniture.fromJson(snapshot.data);
+            return _buildSuccessSection(furniture);
+          }
+          return _buildLoadingSection();
+        },
+      ),
     );
   }
 
@@ -53,14 +57,7 @@ class _furnitureState extends State<furniture> {
   }
 
   Widget _buildSuccessSection(Furniture data) {
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 5, // Menentukan jumlah kolom dalam grid
-        crossAxisSpacing: 10.0, // Spasi antar kolom
-        mainAxisSpacing: 10.0, // Spasi antar baris
-        childAspectRatio:
-            0.75, // Perbandingan tinggi terhadap lebar setiap item
-      ),
+    return ListView.builder(
       itemCount: data.products!.length,
       itemBuilder: (BuildContext context, int index) {
         return _BuildItemFurniture(data.products![index]);

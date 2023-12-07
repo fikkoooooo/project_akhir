@@ -45,6 +45,9 @@ dependencies:
   image_picker: ^1.0.4
   url_launcher: ^6.2.1
   sqflite: ^2.3.0
+  intl: ^0.18.1
+  flutter_timezone: ^1.0.8
+  units_converter: ^2.1.1
 
 
 dependency_overrides:
@@ -93,6 +96,9 @@ flutter:
     - assets/sepatuw.png
     - assets/skincare.png
     - assets/fikko.png
+    - assets/clock.jpg
+    - assets/uang.png
+    - assets/kamera.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:project_akhir/api/api_data_source.dart';
-import 'package:project_akhir/kamera/kamera.dart';
+import 'package:project_akhir/konversi/kamera.dart';
 import 'package:project_akhir/keranjang/cart.dart';
 import 'package:project_akhir/product/all_model.dart';
 import 'package:project_akhir/product/product_view.dart';
 import 'package:project_akhir/profile/profile_page.dart';
 import '../keranjang/card_page.dart';
+import '../konversi/konversi_page.dart';
 
 const accessoriesColor = Color(0xffeab56f);
 
@@ -25,11 +26,11 @@ class _all_produkState extends State<all_produk> {
       if (index == 0) {
         // Pindah ke halaman Home
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => product_page()));
+            context, MaterialPageRoute(builder: (context) => all_produk()));
       } else if (index == 1) {
         // Pindah ke halaman Camera
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => kamera()));
+            context, MaterialPageRoute(builder: (context) => konversipage()));
       } else if (index == 2) {
         // Pindah ke halaman Profile
         Navigator.push(
@@ -116,14 +117,15 @@ class _all_produkState extends State<all_produk> {
       ),
       body: _buildListAllBody(),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: accessoriesColor,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.camera_alt),
-            label: 'Camera',
+            icon: Icon(Icons.add_chart),
+            label: 'Konversi',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -132,6 +134,8 @@ class _all_produkState extends State<all_produk> {
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.white,
+        selectedLabelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), // Set the color for selected item label
         onTap: _onItemTapped,
       ),
     );
@@ -163,7 +167,7 @@ class _all_produkState extends State<all_produk> {
   Widget _buildSuccessSection(AllProduk data) {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 5, // Menentukan jumlah kolom dalam grid
+        crossAxisCount: 2, // Menentukan jumlah kolom dalam grid
         crossAxisSpacing: 10.0, // Spasi antar kolom
         mainAxisSpacing: 10.0, // Spasi antar baris
         childAspectRatio:
@@ -189,25 +193,39 @@ class _all_produkState extends State<all_produk> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Image.network(
-              allProduct.thumbnail!,
-              width: 220,
-              height: 220,
-            ),
-            Text(
-              allProduct.title!,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
             SizedBox(
               height: 10,
             ),
-            Text(
-              allProduct.category!,
-              style: TextStyle(
-                fontSize: 14,
+            Expanded(
+              child: Image.network(
+                allProduct.thumbnail!,
+                width: 220,
+                height: 220,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    allProduct.title!,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    allProduct.category!,
+                    style: TextStyle(
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
               ),
             ),
             SizedBox(

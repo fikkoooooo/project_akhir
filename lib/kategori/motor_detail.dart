@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project_akhir/api/api_data_source.dart';
-import 'package:project_akhir/kategori/motor_deskripsi.dart';
 import 'package:project_akhir/kategori/motor_model.dart';
 
 const accessoriesColor = Color(0xffeab56f);
@@ -38,7 +37,7 @@ class _motorcycleState extends State<motorcycle> {
               return _buildErrorSection();
             }
             if (snapshot.hasData) {
-              Motorcycle motorcycle = Motorcycle.fromJson(snapshot.data);
+              MotorPria motorcycle = MotorPria.fromJson(snapshot.data);
               return _buildSuccessSection(motorcycle);
             }
             return _buildLoadingSection();
@@ -52,15 +51,8 @@ class _motorcycleState extends State<motorcycle> {
     );
   }
 
-  Widget _buildSuccessSection(Motorcycle data) {
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 5, // Menentukan jumlah kolom dalam grid
-        crossAxisSpacing: 10.0, // Spasi antar kolom
-        mainAxisSpacing: 10.0, // Spasi antar baris
-        childAspectRatio:
-            0.75, // Perbandingan tinggi terhadap lebar setiap item
-      ),
+  Widget _buildSuccessSection(MotorPria data) {
+    return ListView.builder(
       itemCount: data.products!.length,
       itemBuilder: (BuildContext context, int index) {
         return _BuildItemMotorcycle(data.products![index]);
@@ -74,14 +66,14 @@ class _motorcycleState extends State<motorcycle> {
     );
   }
 
-  Widget _BuildItemMotorcycle(Products Motorcycle) {
+  Widget _BuildItemMotorcycle(Products MotorPria) {
     return InkWell(
       child: Card(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Image.network(
-              Motorcycle.thumbnail!,
+              MotorPria.thumbnail!,
               width: 220,
               height: 220,
             ),
@@ -89,7 +81,7 @@ class _motorcycleState extends State<motorcycle> {
               height: 10,
             ),
             Text(
-              Motorcycle.title!,
+              MotorPria.title!,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -99,7 +91,7 @@ class _motorcycleState extends State<motorcycle> {
               height: 10,
             ),
             Text(
-              'Rating: ${Motorcycle.rating} /5.0',
+              'Rating: ${MotorPria.rating} /5.0',
               style: TextStyle(
                 fontSize: 14,
               ),
@@ -107,17 +99,7 @@ class _motorcycleState extends State<motorcycle> {
             SizedBox(
               height: 10,
             ),
-            //ElevatedButton(
-            //onPressed: () {
-            //Navigator.push(
-            //context,
-            //MaterialPageRoute(
-            //builder: (context) => DesSepedamotor(motorcycle: Motorcycle),
-            //),
-            //);
-            //},
-            //child: Text("Detail"),
-            //)
+
           ],
         ),
       ),

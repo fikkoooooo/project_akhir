@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:project_akhir/kamera/kamera.dart';
+import 'package:project_akhir/konversi/kamera.dart';
 import 'package:project_akhir/login/login_page.dart';
 import 'package:project_akhir/product/product_view.dart';
+import 'package:project_akhir/profile/komentar.dart';
+
+import '../konversi/konversi_page.dart';
+import '../product/all_produk.dart';
 
 const accessoriesColor = Color(0xffeab56f);
 
@@ -21,11 +25,11 @@ class _ProfilePageState extends State<ProfilePage> {
       if (index == 0) {
         // Pindah ke halaman Home
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => product_page()));
+            context, MaterialPageRoute(builder: (context) => all_produk()));
       } else if (index == 1) {
         // Pindah ke halaman Camera
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => kamera()));
+            context, MaterialPageRoute(builder: (context) => konversipage()));
       } else if (index == 2) {
         // Pindah ke halaman Profile
         Navigator.push(
@@ -81,23 +85,18 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               SizedBox(height: 30),
+
               Card(
                 elevation: 5,
                 child: ListTile(
-                  leading: Icon(Icons.person),
-                  title: Text('Edit Profile'),
+                  leading: Icon(Icons.comment_rounded),
+                  title: Text('Komentar'),
                   onTap: () {
-                    // Action to edit profile
-                  },
-                ),
-              ),
-              Card(
-                elevation: 5,
-                child: ListTile(
-                  leading: Icon(Icons.settings),
-                  title: Text('Settings'),
-                  onTap: () {
-                    // Action to go to settings
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                          return MessagePage();
+                        }));
+
                   },
                 ),
               ),
@@ -116,14 +115,15 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: accessoriesColor,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.camera_alt),
-            label: 'Camera',
+            icon: Icon(Icons.add_chart),
+            label: 'Konversi',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -132,6 +132,8 @@ class _ProfilePageState extends State<ProfilePage> {
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.white,
+        selectedLabelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), // Set the color for selected item label
         onTap: _onItemTapped,
       ),
     );

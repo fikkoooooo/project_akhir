@@ -53,14 +53,7 @@ class _parfumState extends State<parfum> {
   }
 
   Widget _buildSuccessSection(Fragrances data) {
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 5, // Menentukan jumlah kolom dalam grid
-        crossAxisSpacing: 10.0, // Spasi antar kolom
-        mainAxisSpacing: 10.0, // Spasi antar baris
-        childAspectRatio:
-            0.75, // Perbandingan tinggi terhadap lebar setiap item
-      ),
+    return ListView.builder(
       itemCount: data.products!.length,
       itemBuilder: (BuildContext context, int index) {
         return _BuildItemFragrances(data.products![index]);

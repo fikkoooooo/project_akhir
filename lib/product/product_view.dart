@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_akhir/kamera/kamera.dart';
+import 'package:project_akhir/konversi/kamera.dart';
 import 'package:project_akhir/kategori/furniture_detail.dart';
 import 'package:project_akhir/kategori/home_detail.dart';
 import 'package:project_akhir/kategori/laptop_detail.dart';
@@ -10,9 +10,16 @@ import 'package:project_akhir/kategori/motor_detail.dart';
 import 'package:project_akhir/kategori/parfum_detail.dart';
 import 'package:project_akhir/kategori/phone_detail.dart';
 import 'package:project_akhir/kategori/skincare_detail.dart';
+import 'package:project_akhir/kategori2/women_bag_detail.dart';
+import 'package:project_akhir/kategori2/women_dress_detail.dart';
+import 'package:project_akhir/kategori2/women_jewellery_detail.dart';
+import 'package:project_akhir/kategori2/women_shoes_detail.dart';
+import 'package:project_akhir/kategori2/women_watches_detail.dart';
 import 'package:project_akhir/keranjang/card_page.dart';
 import 'package:project_akhir/product/all_produk.dart';
 import 'package:project_akhir/profile/profile_page.dart';
+
+import '../konversi/konversi_page.dart';
 
 const accessoriesColor = Color(0xffeab56f);
 
@@ -32,11 +39,11 @@ class _product_pageState extends State<product_page> {
       if (index == 0) {
         // Pindah ke halaman Home
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => product_page()));
+            context, MaterialPageRoute(builder: (context) => all_produk()));
       } else if (index == 1) {
         // Pindah ke halaman Camera
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => kamera()));
+            context, MaterialPageRoute(builder: (context) => konversipage()));
       } else if (index == 2) {
         // Pindah ke halaman Profile
         Navigator.push(
@@ -121,456 +128,495 @@ class _product_pageState extends State<product_page> {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-              child: GridView.count(
-            padding: const EdgeInsets.all(25),
-            crossAxisCount: 5,
-            children: <Widget>[
-              Card(
-                margin: const EdgeInsets.all(5),
-                elevation: 20,
-                shadowColor: Colors.blue[800],
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return phone();
-                    }));
-                  },
-                  splashColor: Colors.blue,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(
-                          'assets/phone.png',
-                          width: 200,
-                          height: 200,
-                        ),
-                        Text(
-                          "SMARTPHONE",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            GridView.count(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(25),
+              crossAxisCount: 2,
+              children: <Widget>[
+                Card(
+                  margin: const EdgeInsets.all(5),
+                  elevation: 20,
+                  shadowColor: Colors.blue[800],
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return phone();
+                      }));
+                    },
+                    splashColor: Colors.blue,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/phone.png',
+                            width: 125,
+                            height: 125,
+                          ),
+                          Text(
+                            "SMARTPHONE",
+                            style: TextStyle(
+                                fontSize: 15.0, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.all(5),
-                elevation: 20,
-                shadowColor: Colors.blue[800],
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return laptop();
-                    }));
-                  },
-                  splashColor: Colors.blue,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(
-                          'assets/laptop.png',
-                          width: 200,
-                          height: 200,
-                        ),
-                        Text(
-                          "LAPTOP",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                Card(
+                  margin: const EdgeInsets.all(5),
+                  elevation: 20,
+                  shadowColor: Colors.blue[800],
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return laptop();
+                      }));
+                    },
+                    splashColor: Colors.blue,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/laptop.png',
+                            width: 125,
+                            height: 125,
+                          ),
+                          Text(
+                            "LAPTOP",
+                            style: TextStyle(
+                                fontSize: 15.0, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.all(5),
-                elevation: 20,
-                shadowColor: Colors.blue[800],
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return skincare();
-                    }));
-                  },
-                  splashColor: Colors.blue,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(
-                          'assets/skincare.png',
-                          width: 200,
-                          height: 200,
-                        ),
-                        Text(
-                          "SKINCARE",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                Card(
+                  margin: const EdgeInsets.all(5),
+                  elevation: 20,
+                  shadowColor: Colors.blue[800],
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return skincare();
+                      }));
+                    },
+                    splashColor: Colors.blue,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/skincare.png',
+                            width: 125,
+                            height: 125,
+                          ),
+                          Text(
+                            "SKINCARE",
+                            style: TextStyle(
+                                fontSize: 15.0, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.all(5),
-                elevation: 20,
-                shadowColor: Colors.blue[800],
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return furniture();
-                    }));
-                  },
-                  splashColor: Colors.blue,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(
-                          'assets/furniture.png',
-                          width: 200,
-                          height: 200,
-                        ),
-                        Text(
-                          "FURNITURE",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                Card(
+                  margin: const EdgeInsets.all(5),
+                  elevation: 20,
+                  shadowColor: Colors.blue[800],
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return furniture();
+                      }));
+                    },
+                    splashColor: Colors.blue,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/furniture.png',
+                            width: 125,
+                            height: 125,
+                          ),
+                          Text(
+                            "FURNITURE",
+                            style: TextStyle(
+                                fontSize: 15.0, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.all(5),
-                elevation: 20,
-                shadowColor: Colors.blue[800],
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return HomeDeco();
-                    }));
-                  },
-                  splashColor: Colors.blue,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(
-                          'assets/interior.png',
-                          width: 200,
-                          height: 200,
-                        ),
-                        Text(
-                          "HOME DECORATIONS",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                Card(
+                  margin: const EdgeInsets.all(5),
+                  elevation: 20,
+                  shadowColor: Colors.blue[800],
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return HomeDeco();
+                      }));
+                    },
+                    splashColor: Colors.blue,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/interior.png',
+                            width: 125,
+                            height: 125,
+                          ),
+                          Text(
+                            "HOME DECORATIONS",
+                            style: TextStyle(
+                                fontSize: 13.0, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.all(5),
-                elevation: 20,
-                shadowColor: Colors.blue[800],
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return parfum();
-                    }));
-                  },
-                  splashColor: Colors.blue,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(
-                          'assets/parfum.png',
-                          width: 200,
-                          height: 200,
-                        ),
-                        Text(
-                          "FRAGRANCES",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                Card(
+                  margin: const EdgeInsets.all(5),
+                  elevation: 20,
+                  shadowColor: Colors.blue[800],
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return parfum();
+                      }));
+                    },
+                    splashColor: Colors.blue,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/parfum.png',
+                            width: 125,
+                            height: 125,
+                          ),
+                          Text(
+                            "FRAGRANCES",
+                            style: TextStyle(
+                                fontSize: 15.0, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.all(5),
-                elevation: 20,
-                shadowColor: Colors.blue[800],
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return menbaju();
-                    }));
-                  },
-                  splashColor: Colors.blue,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(
-                          'assets/baju.png',
-                          width: 200,
-                          height: 200,
-                        ),
-                        Text(
-                          "MENS SHIRTS",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                Card(
+                  margin: const EdgeInsets.all(5),
+                  elevation: 20,
+                  shadowColor: Colors.blue[800],
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return menbaju();
+                      }));
+                    },
+                    splashColor: Colors.blue,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/baju.png',
+                            width: 125,
+                            height: 125,
+                          ),
+                          Text(
+                            "MENS SHIRTS",
+                            style: TextStyle(
+                                fontSize: 15.0, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.all(5),
-                elevation: 20,
-                shadowColor: Colors.blue[800],
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return mensepatu();
-                    }));
-                  },
-                  splashColor: Colors.blue,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(
-                          'assets/sepatup.png',
-                          width: 200,
-                          height: 200,
-                        ),
-                        Text(
-                          "MENS SHOES",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                Card(
+                  margin: const EdgeInsets.all(5),
+                  elevation: 20,
+                  shadowColor: Colors.blue[800],
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return mensepatu();
+                      }));
+                    },
+                    splashColor: Colors.blue,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/sepatup.png',
+                            width: 125,
+                            height: 125,
+                          ),
+                          Text(
+                            "MENS SHOES",
+                            style: TextStyle(
+                                fontSize: 15.0, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.all(5),
-                elevation: 20,
-                shadowColor: Colors.blue[800],
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return menjam();
-                    }));
-                  },
-                  splashColor: Colors.blue,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(
-                          'assets/jamp.png',
-                          width: 200,
-                          height: 200,
-                        ),
-                        Text(
-                          "MENS WATCHES",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                Card(
+                  margin: const EdgeInsets.all(5),
+                  elevation: 20,
+                  shadowColor: Colors.blue[800],
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return menjam();
+                      }));
+                    },
+                    splashColor: Colors.blue,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/jamp.png',
+                            width: 125,
+                            height: 125,
+                          ),
+                          Text(
+                            "MENS WATCHES",
+                            style: TextStyle(
+                                fontSize: 15.0, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.all(5),
-                elevation: 20,
-                shadowColor: Colors.blue[800],
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return motorcycle();
-                    }));
-                  },
-                  splashColor: Colors.blue,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset('assets/motor.png',
-                            width: 200, height: 200),
-                        Text(
-                          "MOTORCYCLE",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                Card(
+                  margin: const EdgeInsets.all(5),
+                  elevation: 20,
+                  shadowColor: Colors.blue[800],
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return motorcycle();
+                      }));
+                    },
+                    splashColor: Colors.blue,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/motor.png',
+                            width: 125,
+                            height: 125,
+                          ),
+                          Text(
+                            "MOTORCYCLE",
+                            style: TextStyle(
+                                fontSize: 15.0, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.all(5),
-                elevation: 20,
-                shadowColor: Colors.blue[800],
-                child: InkWell(
-                  onTap: () {},
-                  splashColor: Colors.blue,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(
-                          'assets/dress.png',
-                          width: 200,
-                          height: 200,
-                        ),
-                        Text(
-                          "WOMENS DRESSES",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                Card(
+                  margin: const EdgeInsets.all(5),
+                  elevation: 20,
+                  shadowColor: Colors.blue[800],
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return womenbaju();
+                      }));
+                    },
+                    splashColor: Colors.blue,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/dress.png',
+                            width: 125,
+                            height: 125,
+                          ),
+                          Text(
+                            "WOMENS DRESSES",
+                            style: TextStyle(
+                                fontSize: 15.0, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.all(5),
-                elevation: 20,
-                shadowColor: Colors.blue[800],
-                child: InkWell(
-                  onTap: () {},
-                  splashColor: Colors.blue,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset('assets/sepatuw.png',
-                            width: 200, height: 200),
-                        Text(
-                          "WOMENS SHOES",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                Card(
+                  margin: const EdgeInsets.all(5),
+                  elevation: 20,
+                  shadowColor: Colors.blue[800],
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return womensepatu();
+                      }));
+                    },
+                    splashColor: Colors.blue,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/sepatuw.png',
+                            width: 125,
+                            height: 125,
+                          ),
+                          Text(
+                            "WOMENS SHOES",
+                            style: TextStyle(
+                                fontSize: 15.0, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.all(5),
-                elevation: 20,
-                shadowColor: Colors.blue[800],
-                child: InkWell(
-                  onTap: () {},
-                  splashColor: Colors.blue,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset('assets/bagw.png', width: 200, height: 200),
-                        Text(
-                          "WOMENS BAGS",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                Card(
+                  margin: const EdgeInsets.all(5),
+                  elevation: 20,
+                  shadowColor: Colors.blue[800],
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return womentas();
+                      }));
+                    },
+                    splashColor: Colors.blue,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/bagw.png',
+                            width: 125,
+                            height: 125,
+                          ),
+                          Text(
+                            "WOMENS BAGS",
+                            style: TextStyle(
+                                fontSize: 15.0, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.all(5),
-                elevation: 20,
-                shadowColor: Colors.blue[800],
-                child: InkWell(
-                  onTap: () {},
-                  splashColor: Colors.blue,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(
-                          'assets/anting.png',
-                          width: 200,
-                          height: 200,
-                        ),
-                        Text(
-                          "WOMENS JEWELLERY",
-                          style: TextStyle(
-                              fontSize: 20.0, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                Card(
+                  margin: const EdgeInsets.all(5),
+                  elevation: 20,
+                  shadowColor: Colors.blue[800],
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return womenanting();
+                      }));
+                    },
+                    splashColor: Colors.blue,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/anting.png',
+                            width: 125,
+                            height: 125,
+                          ),
+                          Text(
+                            "WOMENS JEWELLERY",
+                            style: TextStyle(
+                                fontSize: 15.0, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.all(5),
-                elevation: 20,
-                shadowColor: Colors.blue[800],
-                child: InkWell(
-                  onTap: () {},
-                  splashColor: Colors.blue,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(
-                          'assets/jamw.png',
-                          width: 150,
-                          height: 150,
-                        ),
-                        Text(
-                          "WOMENS WATCHES",
-                          style: TextStyle(
-                              fontSize: 24.0, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                Card(
+                  margin: const EdgeInsets.all(5),
+                  elevation: 20,
+                  shadowColor: Colors.blue[800],
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return womenjam();
+                      }));
+                    },
+                    splashColor: Colors.blue,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/jamw.png',
+                            width: 125,
+                            height: 125,
+                          ),
+                          Text(
+                            "WOMENS WATCHES",
+                            style: TextStyle(
+                                fontSize: 15.0, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ))
-        ],
+              ],
+            )
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: accessoriesColor,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.camera_alt),
-            label: 'Camera',
+            icon: Icon(Icons.add_chart),
+            label: 'Konversi',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -579,6 +625,11 @@ class _product_pageState extends State<product_page> {
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.white,
+        selectedLabelStyle: TextStyle(
+            color: Colors.white,
+            fontWeight:
+                FontWeight.bold), // Set the color for selected item label
         onTap: _onItemTapped,
       ),
     );

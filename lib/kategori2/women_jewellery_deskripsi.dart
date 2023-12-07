@@ -1,13 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:project_akhir/kategori2/women_bag_model.dart';
+import 'package:project_akhir/kategori2/women_jewellery_model.dart';
 
 const accessoriesColor = Color(0xffeab56f);
 
-class DesWomentas extends StatelessWidget {
-  final Products taswanita;
-  const DesWomentas({Key? key, required this.taswanita}) : super(key: key);
+class DesWomenperhiasan extends StatelessWidget {
+  final Products perhiasanwanita;
+  const DesWomenperhiasan({Key? key, required this.perhiasanwanita}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class DesWomentas extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: accessoriesColor,
         title: const Text(
-          "DETAIL WOMENS BAGS",
+          "DETAIL WOMENS JEWELLERY",
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -30,7 +30,7 @@ class DesWomentas extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
-              child: taswanita.images != null && taswanita.images!.isNotEmpty
+              child: perhiasanwanita.images != null && perhiasanwanita.images!.isNotEmpty
                   ? CarouselSlider(
                 options: CarouselOptions(
                   aspectRatio: 2.0,
@@ -38,7 +38,7 @@ class DesWomentas extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   autoPlay: true,
                 ),
-                items: taswanita.images!.map((item) {
+                items: perhiasanwanita.images!.map((item) {
                   return Container(
                     margin: EdgeInsets.all(5.0),
                     child: Stack(
@@ -74,7 +74,7 @@ class DesWomentas extends StatelessWidget {
             ),
             SizedBox(height: 20.0),
             Text(
-              taswanita.title!,
+              perhiasanwanita.title!,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 24.0,
@@ -83,7 +83,7 @@ class DesWomentas extends StatelessWidget {
             ),
             SizedBox(height: 20.0),
             Text(
-              'Price            : \$${taswanita.price}',
+              'Price            : \$${perhiasanwanita.price}',
               style: TextStyle(
                 fontSize: 14.0,
                 fontWeight: FontWeight.bold,
@@ -91,7 +91,7 @@ class DesWomentas extends StatelessWidget {
             ),
             SizedBox(height: 20.0),
             Text(
-              'Rating          : ${taswanita.rating}/5',
+              'Rating          : ${perhiasanwanita.rating}/5',
               style: TextStyle(
                 fontSize: 14.0,
                 fontWeight: FontWeight.bold,
@@ -99,7 +99,7 @@ class DesWomentas extends StatelessWidget {
             ),
             SizedBox(height: 20.0),
             Text(
-              'Stock           : ${taswanita.stock}',
+              'Stock           : ${perhiasanwanita.stock}',
               style: TextStyle(
                 fontSize: 14.0,
                 fontWeight: FontWeight.bold,
@@ -107,7 +107,7 @@ class DesWomentas extends StatelessWidget {
             ),
             SizedBox(height: 20.0),
             Text(
-              'Kategori      : ${taswanita.category}',
+              'Kategori      : ${perhiasanwanita.category}',
               style: TextStyle(
                 fontSize: 14.0,
                 fontWeight: FontWeight.bold,
@@ -122,7 +122,7 @@ class DesWomentas extends StatelessWidget {
               ),
             ),
             Text(
-              taswanita.description!,
+              perhiasanwanita.description!,
               textAlign: TextAlign.start,
             ),
             SizedBox(height: 20.0),
@@ -131,7 +131,7 @@ class DesWomentas extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          _launchURL(taswanita.thumbnail ?? '');
+          _launchURL(perhiasanwanita.thumbnail ?? '');
         },
         icon: Icon(Icons.search),
         label: Text("See Pict"),

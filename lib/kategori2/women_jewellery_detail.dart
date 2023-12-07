@@ -1,45 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:project_akhir/api/api_data_source.dart';
-import 'package:project_akhir/kategori/men_jam_deskripsi.dart';
-import 'package:project_akhir/kategori/men_jam_model.dart';
+import 'package:project_akhir/kategori2/women_jewellery_deskripsi.dart';
+import 'package:project_akhir/kategori2/women_jewellery_model.dart';
 
 const accessoriesColor = Color(0xffeab56f);
 
-class menjam extends StatefulWidget {
-  const menjam({super.key});
+class womenanting extends StatefulWidget {
+  const womenanting({super.key});
 
   @override
-  State<menjam> createState() => _menjamState();
+  State<womenanting> createState() => _womenantingState();
 }
 
-class _menjamState extends State<menjam> {
+class _womenantingState extends State<womenanting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: accessoriesColor,
         title: const Text(
-          "MENS WATCHES",
+          "WOMENS JEWELLERY",
           style: TextStyle(
               fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
       ),
-      body: _buildListmenjamBody(),
+      body: _buildListwomenperhiasanBody(),
     );
   }
 
-  Widget _buildListmenjamBody() {
+  Widget _buildListwomenperhiasanBody() {
     return Container(
       child: FutureBuilder(
-          future: ApiDataSource.instance.loadMenWatches(),
+          future: ApiDataSource.instance.loadWomenJewellery(),
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
             if (snapshot.hasError) {
               return _buildErrorSection();
             }
             if (snapshot.hasData) {
-              JamPria jampria = JamPria.fromJson(snapshot.data);
-              return _buildSuccessSection(jampria);
+              PerhiasanWanita perhiasanwanita = PerhiasanWanita.fromJson(snapshot.data);
+              return _buildSuccessSection(perhiasanwanita);
             }
             return _buildLoadingSection();
           }),
@@ -52,11 +52,11 @@ class _menjamState extends State<menjam> {
     );
   }
 
-  Widget _buildSuccessSection(JamPria data) {
+  Widget _buildSuccessSection(PerhiasanWanita data) {
     return ListView.builder(
       itemCount: data.products!.length,
       itemBuilder: (BuildContext context, int index) {
-        return _BuildItemJamPria(data.products![index]);
+        return _BuildItemPerhiasanWanita(data.products![index]);
       },
     );
   }
@@ -67,14 +67,14 @@ class _menjamState extends State<menjam> {
     );
   }
 
-  Widget _BuildItemJamPria(Products JamPria) {
+  Widget _BuildItemPerhiasanWanita(Products PerhiasanWanita) {
     return InkWell(
       child: Card(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Image.network(
-              JamPria.thumbnail!,
+              PerhiasanWanita.thumbnail!,
               width: 220,
               height: 220,
             ),
@@ -82,7 +82,7 @@ class _menjamState extends State<menjam> {
               height: 10,
             ),
             Text(
-              JamPria.title!,
+              PerhiasanWanita.title!,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -92,7 +92,7 @@ class _menjamState extends State<menjam> {
               height: 10,
             ),
             Text(
-              'Rating: ${JamPria.rating} /5.0',
+              'Rating: ${PerhiasanWanita.rating} /5.0',
               style: TextStyle(
                 fontSize: 14,
               ),
@@ -105,7 +105,7 @@ class _menjamState extends State<menjam> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DesJambaju(jampria: JamPria),
+                    builder: (context) => DesWomenperhiasan(perhiasanwanita: PerhiasanWanita),
                   ),
                 );
               },

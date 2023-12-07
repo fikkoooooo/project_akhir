@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:project_akhir/kamera/kamera.dart';
 import 'package:project_akhir/keranjang/cart.dart';
 import 'package:project_akhir/product/all_produk.dart';
 import 'package:project_akhir/product/product_view.dart';
 import 'package:project_akhir/profile/profile_page.dart';
 import 'package:project_akhir/product/all_model.dart';
+
+import '../konversi/konversi_page.dart';
 
 const accessoriesColor = Color(0xffeab56f);
 
@@ -24,11 +25,11 @@ class _CartPageState extends State<CartPage> {
       if (index == 0) {
         // Pindah ke halaman Home
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => product_page()));
+            context, MaterialPageRoute(builder: (context) => all_produk()));
       } else if (index == 1) {
         // Pindah ke halaman Camera
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => kamera()));
+            context, MaterialPageRoute(builder: (context) => konversipage()));
       } else if (index == 2) {
         // Pindah ke halaman Profile
         Navigator.push(
@@ -115,14 +116,15 @@ class _CartPageState extends State<CartPage> {
       ),
       body: _buildCartItems(context),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: accessoriesColor,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.camera_alt),
-            label: 'Camera',
+            icon: Icon(Icons.add_chart),
+            label: 'Konversi',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -131,6 +133,8 @@ class _CartPageState extends State<CartPage> {
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.white,
+        selectedLabelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), // Set the color for selected item label
         onTap: _onItemTapped,
       ),
     );

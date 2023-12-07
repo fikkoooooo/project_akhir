@@ -11,5 +11,4 @@ class Cart {
     cartItems.removeWhere((item) => item.id == product.id);
   }
 
-// Metode lain seperti removeItem, clearCart, dll.
 }
